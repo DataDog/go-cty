@@ -320,6 +320,25 @@ func TestIn(t *testing.T) {
 			}),
 		},
 		{
+			GoValue: struct {
+				Name   string `cty:"name"`
+				Number int    `cty:"number"`
+				Age    int    `cty:"age,optional"`
+			}{"Steven", 1, 5},
+			Type: cty.ObjectWithOptionalAttrs(map[string]cty.Type{
+				"name":   cty.String,
+				"number": cty.Number,
+				"age":    cty.Number,
+			}, []string{
+				"age",
+			}),
+			Want: cty.ObjectVal(map[string]cty.Value{
+				"name":   cty.StringVal("Steven"),
+				"number": cty.NumberIntVal(1),
+				"age":    cty.NumberIntVal(5),
+			}),
+		},
+		{
 			GoValue: map[string]interface{}{
 				"name":   "Steven",
 				"number": 1,

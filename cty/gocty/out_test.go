@@ -289,6 +289,30 @@ func TestOut(t *testing.T) {
 				Number: ptrToInt(12),
 			},
 		},
+		{
+			CtyValue: cty.ObjectVal(map[string]cty.Value{
+				"name":   cty.StringVal("Stephen"),
+				"number": cty.NumberIntVal(12),
+			}),
+			TargetType: reflect.TypeOf(testOptionalStruct{}),
+			Want: testOptionalStruct{
+				Name:   "Stephen",
+				Number: ptrToInt(12),
+			},
+		},
+		{
+			CtyValue: cty.ObjectVal(map[string]cty.Value{
+				"name":   cty.StringVal("Stephen"),
+				"number": cty.NumberIntVal(12),
+				"age":    cty.NumberIntVal(5),
+			}),
+			TargetType: reflect.TypeOf(testOptionalStruct{}),
+			Want: testOptionalStruct{
+				Name:   "Stephen",
+				Number: ptrToInt(12),
+				Age:    ptrToInt(5),
+			},
+		},
 
 		// Tuples
 		{
@@ -407,6 +431,12 @@ func testOutWrongResult(ctyValue cty.Value, targetType reflect.Type, got interfa
 type testStruct struct {
 	Name   string `cty:"name"`
 	Number *int   `cty:"number"`
+}
+
+type testOptionalStruct struct {
+	Name   string `cty:"name"`
+	Number *int   `cty:"number"`
+	Age    *int   `cty:"age,optional"`
 }
 
 type testTupleStruct struct {

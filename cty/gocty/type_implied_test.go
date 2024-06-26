@@ -121,6 +121,16 @@ func TestImpliedType(t *testing.T) {
 				"number": cty.Number,
 			}),
 		},
+		{
+			&testOptionalStruct{},
+			cty.ObjectWithOptionalAttrs(map[string]cty.Type{
+				"name":   cty.String,
+				"number": cty.Number,
+				"age":    cty.Number,
+			}, []string{
+				"age",
+			}),
+		},
 
 		// Dynamic
 		{
