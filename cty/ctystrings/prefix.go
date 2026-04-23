@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"unicode/utf8"
 
-	"github.com/apparentlymart/go-textseg/v15/textseg"
+	"github.com/apparentlymart/go-textseg/v16/textseg"
 	"golang.org/x/text/unicode/norm"
 )
 
