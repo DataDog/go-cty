@@ -4,7 +4,7 @@ require (
 	github.com/apparentlymart/go-textseg/v15 v15.0.0
 	github.com/google/go-cmp v0.3.1
 	github.com/vmihailenco/msgpack/v5 v5.3.5
-	golang.org/x/text v0.11.0
+	golang.org/x/text v0.36.0
 )
 
 require (
@@ -12,4 +12,4 @@ require (
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 )
 
-go 1.18
+go 1.25.0
